@@ -1,98 +1,96 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image, Text, StyleSheet } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
+import { DiscordButton } from "@/components/discord-button";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
+export function Login() {
     return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+        <LinearGradient
+            colors={["#0E1647", "#0A1033"]}
+            style={styles.loginView}
+        >
+            <Image
+                source={require('@/assets/images/Union.png')}
+                style={styles.union}
+            />
+            <Image
+                source={require('@/assets/images/lol.png')}
+                style={styles.character}
+            />
+            <LinearGradient
+                colors={["rgba(12, 18, 59, 0)", "#0C123B"]}
+                style={styles.heroFade}
+            />
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+            <Text style={styles.titletext}>
+                Conecte-se{"\n"}e organize suas{"\n"}jogatinas
+            </Text>
+            <Text style={styles.subtitletext}>
+                Crie grupos para jogar seus games{"\n"}favoritos com seus amigos
+            </Text>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
+            <DiscordButton
+                label="Entrar com Discord"
+                onPress={() => router.push('/home')}
+                style={styles.button}
+            />
+        </LinearGradient>
+    )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
-});
+    loginView: {
+        flex: 1,
+    },
+    union: {
+        position: 'absolute',
+        top: 100,
+        left: 0,
+        width: 375,
+        height: 360,
+    },
+    character: {
+        position: 'absolute',
+        top: 114.51,
+        left: 72,
+        width: 250,
+        height: 297,
+    },
+    heroFade: {
+        position: 'absolute',
+        top: 380.51,
+        left: 0,
+        width: 375,
+        height: 127,
+    },
+    titletext: {
+        position: 'absolute',
+        top: 394.51,
+        left: 0,
+        width: 375,
+        fontFamily: 'Rajdhani_700Bold',
+        fontSize: 40,
+        lineHeight: 40,
+        color: '#DDE3F0',
+        textAlign: 'center',
+    },
+    subtitletext: {
+        position: 'absolute',
+        top: 530.51,
+        left: 0,
+        width: 375,
+        fontFamily: 'Inter_400Regular',
+        fontSize: 15,
+        lineHeight: 25,
+        color: '#DDE3F0',
+        textAlign: 'center',
+    },
+    button: {
+        position: 'absolute',
+        top: 628.51,
+        left: 51,
+        right: 50,
+    },
+})
+
+export default Login;
