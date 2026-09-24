@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#991F36',
     },
     label: {
-        marginLeft: 39,
+        marginLeft:55,
         fontFamily: 'Inter_500Medium',
         fontSize: 15,
         lineHeight: 25,
