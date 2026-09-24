@@ -1,28 +1,28 @@
 import { ScrollView, Pressable, Image, Text, StyleSheet } from "react-native";
-import { CATEGORIES } from "@/data/categories-data";
+import { CATEGORIAS } from "@/data/dados-categorias";
 
-type CategoryPickerProps = {
-    selectedId: string;
-    onSelect: (id: string) => void;
+type SeletorCategoriaProps = {
+    idSelecionado: string;
+    aoSelecionar: (id: string) => void;
 };
 
-export function CategoryPicker({ selectedId, onSelect }: CategoryPickerProps) {
+export function SeletorCategoria({ idSelecionado, aoSelecionar }: SeletorCategoriaProps) {
     return (
         <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.content}
         >
-            {CATEGORIES.map((category) => {
-                const selected = category.id === selectedId;
+            {CATEGORIAS.map((categoria) => {
+                const selecionada = categoria.id === idSelecionado;
                 return (
                     <Pressable
-                        key={category.id}
-                        style={[styles.card, !selected && styles.cardUnselected]}
-                        onPress={() => onSelect(category.id)}
+                        key={categoria.id}
+                        style={[styles.card, !selecionada && styles.cardUnselected]}
+                        onPress={() => aoSelecionar(categoria.id)}
                     >
-                        <Image source={category.icon} style={styles.icon} />
-                        <Text style={styles.label}>{category.label}</Text>
+                        <Image source={categoria.icone} style={styles.icon} />
+                        <Text style={styles.label}>{categoria.rotulo}</Text>
                     </Pressable>
                 );
             })}
@@ -33,7 +33,6 @@ export function CategoryPicker({ selectedId, onSelect }: CategoryPickerProps) {
 const styles = StyleSheet.create({
     content: {
         gap: 8,
-        paddingHorizontal: 24,
     },
     card: {
         width: 104,

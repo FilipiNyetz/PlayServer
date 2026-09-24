@@ -2,22 +2,22 @@ import { ReactNode } from "react";
 import { Text, Pressable, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import { BackIcon } from "@/components/icons";
+import { IconeVoltar } from "@/components/ui/icones";
 
-type ScreenHeaderProps = {
-    title: string;
-    right?: ReactNode;
+type CabecalhoTelaProps = {
+    titulo: string;
+    direita?: ReactNode;
 };
 
-export function ScreenHeader({ title, right }: ScreenHeaderProps) {
+export function CabecalhoTela({ titulo, direita }: CabecalhoTelaProps) {
     return (
         <LinearGradient colors={["#171F52", "#1D2766"]} style={styles.header}>
             <Pressable onPress={() => router.back()} hitSlop={12}>
-                <BackIcon />
+                <IconeVoltar />
             </Pressable>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.title}>{titulo}</Text>
             <Pressable hitSlop={12} style={styles.right}>
-                {right}
+                {direita}
             </Pressable>
         </LinearGradient>
     );

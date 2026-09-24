@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+export default function LayoutRaiz() {
   const [fontsLoaded] = useFonts({
     Rajdhani_500Medium,
     Rajdhani_700Bold,

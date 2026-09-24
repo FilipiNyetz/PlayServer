@@ -1,19 +1,19 @@
 import { View, Image, Text, Pressable, StyleSheet, ImageSourcePropType } from "react-native";
 
-type SelectedServerCardProps = {
-    name: string;
-    game: string;
-    cover: ImageSourcePropType;
+type CartaoServidorSelecionadoProps = {
+    nome: string;
+    jogo: string;
+    capa: ImageSourcePropType;
     onPress?: () => void;
 };
 
-export function SelectedServerCard({ name, game, cover, onPress }: SelectedServerCardProps) {
+export function CartaoServidorSelecionado({ nome, jogo, capa, onPress }: CartaoServidorSelecionadoProps) {
     return (
         <Pressable style={styles.card} onPress={onPress}>
-            <Image source={cover} style={styles.cover} />
+            <Image source={capa} style={styles.cover} />
             <View style={styles.info}>
-                <Text style={styles.name}>{name}</Text>
-                <Text style={styles.game}>{game}</Text>
+                <Text style={styles.name}>{nome}</Text>
+                <Text style={styles.game}>{jogo}</Text>
             </View>
             <Text style={styles.chevron}>{'›'}</Text>
         </Pressable>

@@ -1,18 +1,18 @@
 import { View, Text, Pressable, StyleSheet, StyleProp, ViewStyle } from "react-native";
-import { DiscordIcon } from "@/components/icons";
+import { IconeDiscord } from "@/components/ui/icones";
 
-type DiscordButtonProps = {
-    label: string;
+type BotaoDiscordProps = {
+    rotulo: string;
     onPress?: () => void;
     style?: StyleProp<ViewStyle>;
 };
 
-export function DiscordButton({ label, onPress, style }: DiscordButtonProps) {
+export function BotaoDiscord({ rotulo, onPress, style }: BotaoDiscordProps) {
     return (
         <Pressable style={[styles.button, style]} onPress={onPress}>
-            <DiscordIcon />
+            <IconeDiscord />
             <View style={styles.divider} />
-            <Text style={styles.label}>{label}</Text>
+            <Text style={styles.label}>{rotulo}</Text>
         </Pressable>
     );
 }

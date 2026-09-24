@@ -1,14 +1,12 @@
 import { Image, Text, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import { DiscordButton } from "@/components/discord-button";
+import { FundoTela } from "@/components/ui/fundo-tela";
+import { BotaoDiscord } from "@/components/ui/botao-discord";
 
 export function Login() {
     return (
-        <LinearGradient
-            colors={["#0E1647", "#0A1033"]}
-            style={styles.loginView}
-        >
+        <FundoTela>
             <Image
                 source={require('@/assets/images/Union.png')}
                 style={styles.union}
@@ -29,19 +27,16 @@ export function Login() {
                 Crie grupos para jogar seus games{"\n"}favoritos com seus amigos
             </Text>
 
-            <DiscordButton
-                label="Entrar com Discord"
-                onPress={() => router.push('/home')}
+            <BotaoDiscord
+                rotulo="Entrar com Discord"
+                onPress={() => router.push('/inicio')}
                 style={styles.button}
             />
-        </LinearGradient>
+        </FundoTela>
     )
 }
 
 const styles = StyleSheet.create({
-    loginView: {
-        flex: 1,
-    },
     union: {
         position: 'absolute',
         top: 100,

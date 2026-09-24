@@ -1,6 +1,6 @@
 import Svg, { Path } from "react-native-svg";
 
-export function CalendarIcon() {
+export function IconeCalendario() {
     return (
         <Svg width={16} height={16} viewBox="0 0 16 16" fill="none">
             <Path
@@ -11,18 +11,18 @@ export function CalendarIcon() {
     );
 }
 
-export function PersonIcon({ color }: { color: string }) {
+export function IconePessoa({ cor }: { cor: string }) {
     return (
         <Svg width={16} height={16} viewBox="0 0 16 16" fill="none">
             <Path
                 d="M2.66666 14.6667C2.66666 13.2522 3.22857 11.8956 4.22876 10.8954C5.22896 9.89524 6.58551 9.33333 8 9.33333C9.41449 9.33333 10.771 9.89524 11.7712 10.8954C12.7714 11.8956 13.3333 13.2522 13.3333 14.6667H2.66666ZM8 8.66667C5.79 8.66667 4 6.87667 4 4.66667C4 2.45667 5.79 0.666666 8 0.666666C10.21 0.666666 12 2.45667 12 4.66667C12 6.87667 10.21 8.66667 8 8.66667Z"
-                fill={color}
+                fill={cor}
             />
         </Svg>
     );
 }
 
-export function PlusIcon() {
+export function IconeMais() {
     return (
         <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
             <Path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z" fill="#DDE3F0" />
@@ -30,7 +30,7 @@ export function PlusIcon() {
     );
 }
 
-export function BackIcon() {
+export function IconeVoltar() {
     return (
         <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
             <Path
@@ -41,7 +41,7 @@ export function BackIcon() {
     );
 }
 
-export function ShareIcon() {
+export function IconeCompartilhar() {
     return (
         <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
             <Path
@@ -52,7 +52,7 @@ export function ShareIcon() {
     );
 }
 
-export function DiscordIcon() {
+export function IconeDiscord() {
     return (
         <Svg width={24} height={17.71} viewBox="0 0 24 17.7112" fill="none">
             <Path

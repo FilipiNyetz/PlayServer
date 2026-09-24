@@ -1,33 +1,25 @@
-import { View, Image, Text, StyleSheet, ImageSourcePropType } from "react-native";
+import { View, Image, Text, StyleSheet } from "react-native";
+import { Jogador, StatusJogador } from "@/data/dados-jogadores";
 
-export type PlayerStatus = "available" | "busy";
-
-export type Player = {
-    id: string;
-    name: string;
-    status: PlayerStatus;
-    avatar: ImageSourcePropType;
+const ROTULO_STATUS: Record<StatusJogador, string> = {
+    disponivel: "Disponível",
+    ocupado: "Ocupado",
 };
 
-const STATUS_LABEL: Record<PlayerStatus, string> = {
-    available: "Disponível",
-    busy: "Ocupado",
+const COR_STATUS: Record<StatusJogador, string> = {
+    disponivel: "#32BD50",
+    ocupado: "#E51C44",
 };
 
-const STATUS_COLOR: Record<PlayerStatus, string> = {
-    available: "#32BD50",
-    busy: "#E51C44",
-};
-
-export function PlayerRow({ name, status, avatar }: Omit<Player, "id">) {
+export function LinhaJogador({ nome, status, avatar }: Omit<Jogador, "id">) {
     return (
         <View style={styles.item}>
             <Image source={avatar} style={styles.avatar} />
             <View>
-                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.name}>{nome}</Text>
                 <View style={styles.statusRow}>
-                    <View style={[styles.dot, { backgroundColor: STATUS_COLOR[status] }]} />
-                    <Text style={styles.status}>{STATUS_LABEL[status]}</Text>
+                    <View style={[styles.dot, { backgroundColor: COR_STATUS[status] }]} />
+                    <Text style={styles.status}>{ROTULO_STATUS[status]}</Text>
                 </View>
             </View>
         </View>

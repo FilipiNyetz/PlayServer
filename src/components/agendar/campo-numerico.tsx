@@ -1,16 +1,25 @@
 import { TextInput, StyleSheet } from "react-native";
 
-type DigitInputProps = {
+type CampoNumericoProps = {
     value: string;
     onChangeText: (value: string) => void;
+    maximo: number;
 };
 
-export function DigitInput({ value, onChangeText }: DigitInputProps) {
+export function CampoNumerico({ value, onChangeText, maximo }: CampoNumericoProps) {
+    function aoAlterarTexto(texto: string) {
+        const digitos = texto.replace(/[^0-9]/g, "");
+        if (digitos !== "" && Number(digitos) > maximo) {
+            return;
+        }
+        onChangeText(digitos);
+    }
+
     return (
         <TextInput
             style={styles.input}
             value={value}
-            onChangeText={(text) => onChangeText(text.replace(/[^0-9]/g, ""))}
+            onChangeText={aoAlterarTexto}
             keyboardType="number-pad"
             maxLength={2}
             placeholder="00"

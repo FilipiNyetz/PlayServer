@@ -1,50 +1,39 @@
-import { View, Image, Text, Pressable, StyleSheet, ImageSourcePropType } from "react-native";
-import { CalendarIcon, PersonIcon } from "@/components/icons";
+import { View, Image, Text, Pressable, StyleSheet } from "react-native";
+import { IconeCalendario, IconePessoa } from "@/components/ui/icones";
+import { Partida, PapelPartida } from "@/data/dados-partidas";
 
-export type MatchRole = "host" | "guest";
-
-export type Match = {
-    id: string;
-    title: string;
-    description: string;
-    category: string;
-    role: MatchRole;
-    date: string;
-    cover: ImageSourcePropType;
+const ROTULO_PAPEL: Record<PapelPartida, string> = {
+    anfitriao: "Anfitrião",
+    visitante: "Visitante",
 };
 
-const ROLE_LABEL: Record<MatchRole, string> = {
-    host: "Anfitrião",
-    guest: "Visitante",
+const COR_PAPEL: Record<PapelPartida, string> = {
+    anfitriao: "#E51C44",
+    visitante: "#32BD50",
 };
 
-const ROLE_COLOR: Record<MatchRole, string> = {
-    host: "#E51C44",
-    guest: "#32BD50",
-};
-
-type MatchListItemProps = Omit<Match, "id" | "description"> & {
+type ItemPartidaProps = Omit<Partida, "id" | "descricao"> & {
     onPress?: () => void;
 };
 
-export function MatchListItem({ title, category, role, date, cover, onPress }: MatchListItemProps) {
+export function ItemPartida({ titulo, categoria, papel, data, capa, onPress }: ItemPartidaProps) {
     return (
         <Pressable style={styles.item} onPress={onPress}>
-            <Image source={cover} style={styles.cover} />
+            <Image source={capa} style={styles.cover} />
             <View style={styles.info}>
                 <View style={styles.topRow}>
-                    <Text style={styles.title} numberOfLines={1}>{title}</Text>
-                    <Text style={styles.category}>{category}</Text>
+                    <Text style={styles.title} numberOfLines={1}>{titulo}</Text>
+                    <Text style={styles.category}>{categoria}</Text>
                 </View>
                 <View style={styles.bottomRow}>
                     <View style={styles.tag}>
-                        <CalendarIcon />
-                        <Text style={styles.date}>{date}</Text>
+                        <IconeCalendario />
+                        <Text style={styles.date}>{data}</Text>
                     </View>
                     <View style={styles.tag}>
-                        <PersonIcon color={ROLE_COLOR[role]} />
-                        <Text style={[styles.role, { color: ROLE_COLOR[role] }]}>
-                            {ROLE_LABEL[role]}
+                        <IconePessoa cor={COR_PAPEL[papel]} />
+                        <Text style={[styles.role, { color: COR_PAPEL[papel] }]}>
+                            {ROTULO_PAPEL[papel]}
                         </Text>
                     </View>
                 </View>
@@ -69,7 +58,7 @@ const styles = StyleSheet.create({
     },
     info: {
         flex: 1,
-        justifyContent: "space-between",
+        justifyContent: "center",
     },
     topRow: {
         flexDirection: "row",
@@ -91,7 +80,7 @@ const styles = StyleSheet.create({
     bottomRow: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: 12,
+        marginTop: 6,
     },
     tag: {
         flexDirection: "row",
