@@ -1,14 +1,5 @@
 import Svg, { Path } from "react-native-svg";
 
-// O que é ViewBox?
-// Resposta: o viewBox define o "sistema de coordenadas interno" do SVG,
-// no formato "min-x min-y largura altura" — é dentro desse espaço que os
-// pontos do "d" (o desenho do Path) são posicionados, e não em pixels da tela.
-// Já width/height (as props do <Svg>) definem o tamanho REAL renderizado.
-// O SVG escala o conteúdo do viewBox pra caber nesse tamanho final — por
-// isso dá pra pegar um ícone desenhado em "24x24" (no Figma) e exibir em
-// qualquer tamanho aqui sem distorcer, desde que a proporção seja mantida.
-
 export function CalendarIcon() {
     return (
         <Svg width={16} height={16} viewBox="0 0 16 16" fill="none">

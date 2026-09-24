@@ -39,3 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# anotações pessoais (só local, não sobe pro GitHub)
+anotacoes.md

@@ -7,13 +7,6 @@ export type Category = {
     icon: ImageSourcePropType;
 };
 
-// O que é o Omit?
-// Resposta: Omit<Tipo, "chave"> é um utility type do TypeScript que pega um
-// tipo existente e devolve uma cópia dele SEM as chaves listadas.
-// Aqui, "Category" tem { id, label, icon }, mas o componente CategoryCard
-// não usa o "id" (ele só serve de "key" React lá no .map() de categories.tsx).
-// Então em vez de escrever um tipo novo do zero repetindo label e icon,
-// reaproveitamos Category e removemos só o id: Omit<Category, "id">.
 export function CategoryCard({ label, icon }: Omit<Category, "id">) {
     return (
         <LinearGradient colors={["#171F52", "#1D2766"]} style={styles.card}>

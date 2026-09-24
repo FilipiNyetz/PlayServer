@@ -8,15 +8,6 @@ import { PlayerRow } from "@/components/match/player-row";
 import { PLAYERS } from "@/data/players-data";
 import { MATCHES } from "@/data/matches-data";
 
-// Pq esse id tem um nome tao estranho?
-// Resposta: o nome estranho é o do ARQUIVO, "[id].tsx", não o da variável.
-// No Expo Router (roteamento por arquivos, igual Next.js), colchetes no nome
-// do arquivo criam uma rota dinâmica: esse arquivo responde por qualquer
-// caminho "/match/alguma-coisa" (ex: /match/1, /match/2, /match/abc).
-// O texto que vier no lugar dos colchetes fica disponível dentro do
-// componente através de useLocalSearchParams<{ id: string }>() — por isso
-// o nome do parâmetro (id) precisa bater com o nome usado nos colchetes.
-// Foi assim que navegamos pra cá: router.push(`/match/${match.id}`) na Home.
 export default function MatchDetails() {
     const { id } = useLocalSearchParams<{ id: string }>();
     const match = MATCHES.find((item) => item.id === id) ?? MATCHES[0];

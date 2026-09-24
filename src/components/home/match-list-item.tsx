@@ -13,15 +13,6 @@ export type Match = {
     cover: ImageSourcePropType;
 };
 
-// O que é esse Record<X, Y>?
-// Resposta: Record<K, V> é um utility type do TypeScript que descreve um
-// objeto onde toda chave é do tipo K e todo valor é do tipo V.
-// Record<MatchRole, string> == um objeto que OBRIGATORIAMENTE tem uma
-// chave "host" e uma chave "guest" (porque MatchRole só pode ser um desses
-// dois valores), cada uma apontando pra uma string.
-// Vantagem: se eu adicionar um novo MatchRole (tipo "spectator") e esquecer
-// de colocar ele aqui, o TypeScript acusa erro na hora de compilar — evita
-// esquecer de tratar um caso nesses mapas de role -> texto/cor.
 const ROLE_LABEL: Record<MatchRole, string> = {
     host: "Anfitrião",
     guest: "Visitante",
@@ -32,14 +23,6 @@ const ROLE_COLOR: Record<MatchRole, string> = {
     guest: "#32BD50",
 };
 
-// O que é esse componente?
-// Resposta: é o tipo das PROPS que o componente MatchListItem (logo abaixo)
-// aceita. Ele reaproveita o tipo "Match" (mesmo formato usado nos dados em
-// src/data/matches-data.ts), mas remove "id" e "description" com Omit,
-// porque o card da lista não exibe nem usa esses dois campos (o id só
-// importa pra Home navegar pro /match/[id], e a description só aparece na
-// tela de detalhes). Depois soma (&) um "onPress" opcional, que é a função
-// chamada quando o usuário toca no card — é isso que a Home usa pra navegar.
 type MatchListItemProps = Omit<Match, "id" | "description"> & {
     onPress?: () => void;
 };
